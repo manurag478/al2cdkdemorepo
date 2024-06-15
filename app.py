@@ -7,9 +7,7 @@ from al2_cdk_code.al2_cdk_code_stack import Al2CdkCodeStack
 from pygit2 import Repository
 app = cdk.App()
 branch=app.node.try_get_context("branch")
-workspace=app.node.try_get_context("workspace")
 branch=str(branch).replace("_","-")
-print(workspace)
 try:
     stackname="al2-cdk-stack"+branch
 except TypeError as e:
@@ -18,6 +16,6 @@ except TypeError as e:
     branch=repo.head.shorthand
     stackname="al2-cdk-stack"+branch
 
-Al2CdkCodeStack(app, stackname,branch=branch,workspace=workspace, env=cdk.Environment(account=os.getenv("CDK_DEFAULT_ACCOUNT"), 
+Al2CdkCodeStack(app, stackname=stackname,branch=branch, env=cdk.Environment(account=os.getenv("CDK_DEFAULT_ACCOUNT"), 
                                                                                       region=os.getenv("CDK_DEFAULT_REGION")))
 app.synth()

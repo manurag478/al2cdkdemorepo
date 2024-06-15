@@ -5,13 +5,12 @@ phases:
     nodejs: 16
   commands:
     - branch=$CODEBUILD_SOURCE_VERSION
-    - workspace=$WORKSPACE
     - branch=${branch,,}
-    - echo $workspace
     - echo $branch
     - npm install -g python 
     - npm install -g aws-cdk
     - python --version && pip --version
+    - pip install aws-cdk.cdk
     - pip install boto3
     - pip install boto
     - pip install pygit2
@@ -19,4 +18,4 @@ phases:
   commands:
     - cd os/amazon_linux_2
     - python -m pip install -r requirements.txt
-    - cdk deploy -c branch=$branch -c workspace=$workspace
+    - cdk deploy -c branch=$branch
