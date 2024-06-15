@@ -16,6 +16,6 @@ except TypeError as e:
     branch=repo.head.shorthand
     stackname="al2-cdk-stack"+branch
 
-Al2CdkCodeStack(app, stackname=stackname,branch=branch, env=cdk.Environment(account=os.getenv("CDK_DEFAULT_ACCOUNT"), 
+Al2CdkCodeStack(app, stackname, stackname=stackname,branch=branch, env=cdk.Environment(account=os.getenv("CDK_DEFAULT_ACCOUNT"), 
                                                                                       region=os.getenv("CDK_DEFAULT_REGION")))
 app.synth()
