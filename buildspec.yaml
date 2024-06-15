@@ -16,6 +16,5 @@ phases:
     - pip install pygit2
  build:
   commands:
-    - cd os/amazon_linux_2
     - python -m pip install -r requirements.txt
     - cdk deploy -c branch=$branch
